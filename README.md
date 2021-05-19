@@ -2,7 +2,7 @@
 
 ### Docker Quickstart
 
-Build a service variant with `blubber .pipeline/blubber.yaml <variant> > Dockerfile`,
+Generated a Dockerfile for service variant with `blubber .pipeline/blubber.yaml <variant> > Dockerfile`,
 and build using regular Docker tools.
 
 
