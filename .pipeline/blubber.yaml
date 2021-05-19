@@ -7,8 +7,11 @@ runs:
     APP_BASE_PATH: /srv/service
 
 variants:
-  development:
+  build:
     apt: { packages: [build-essential] }
     copies: [local]
+    entrypoint: [make, build]
+    runs: { insecurely: false }
+  development:
+    includes: [build]
     entrypoint: [make, run]
-    runs: { insecurely: true }
