@@ -14,4 +14,16 @@ variants:
     runs: { insecurely: false }
   development:
     includes: [build]
+    apt: { packages: [ca-certificates] }
     entrypoint: [make, run]
+    runs: { environment: { APP_CONFIG_PATH: ./config.dev.yaml } }
+  test:
+    includes: [build]
+    apt: { packages: [ca-certificates] }
+    entrypoint: [make, test]
+  prep:
+    includes: [build]
+  production:
+    copies: [prep]
+    entrypoint: [make, run]
+    runs: { environment: { APP_CONFIG_PATH: ./config.prod.yaml } }
