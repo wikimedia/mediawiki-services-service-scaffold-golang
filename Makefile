@@ -9,3 +9,6 @@ build:
 
 run:
 	go run -ldflags "$(GO_LDFLAGS)" main.go healthz.go
+
+test:
+	echo "Not implemented"
