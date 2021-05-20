@@ -2,21 +2,16 @@ version: v4
 base: docker-registry.wikimedia.org/golang:1.14-1
 lives:
   in: /srv/service/
-runs:
-  environment:
-    APP_BASE_PATH: /srv/service
 
 variants:
   build:
     apt: { packages: [build-essential] }
     copies: [local]
     entrypoint: [make, build]
-    runs: { insecurely: false }
   development:
     includes: [build]
     apt: { packages: [ca-certificates] }
     entrypoint: [make, run]
-    runs: { environment: { APP_CONFIG_PATH: ./config.dev.yaml } }
   test:
     includes: [build]
     apt: { packages: [ca-certificates] }
@@ -26,4 +21,3 @@ variants:
   production:
     copies: [prep]
     entrypoint: [make, run]
-    runs: { environment: { APP_CONFIG_PATH: ./config.prod.yaml } }
