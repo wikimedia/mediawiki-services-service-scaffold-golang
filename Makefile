@@ -20,6 +20,5 @@ build:
 run:
 	go run -ldflags "$(GO_LDFLAGS)" . -config $(CONFIG)
 
-unit-test: build
-	@echo $(CONFIG)
-	go test -ldflags "$(GO_LDFLAGS)" -tags=unit -config $(CONFIG)
+test:
+	echo "Not implemented"
