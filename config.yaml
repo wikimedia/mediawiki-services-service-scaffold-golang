@@ -1,5 +1,8 @@
 # The name of this service (as it appears in logs)
-service_name: service-scaffold-golang
+service_name: scaffold-demo
+
+# The type of this service (as it appears in logs)
+service_type: service-scaffold-golang
 
 # A constant prepended to all URIs
 base_uri: /v0
@@ -8,4 +11,4 @@ base_uri: /v0
 listen_address: localhost
 listen_port: 8080
 # Log level, one of (in increasing severity): debug, info, warning, error and fatal
-# log_level: info
+log_level: debug
