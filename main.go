@@ -39,7 +39,8 @@ func main() {
 	)
 
 	if err != nil {
-		logger.Error("An error occurred:", err)
+		fmt.Fprintf(os.Stderr, "Unable to initialize the logger: %s", err)
+		os.Exit(1)
 	}
 
 	logger.Info("Initializing service %s (Go version: %s, Build host: %s, Timestamp: %s", config.ServiceName, version, buildHost, buildDate)

@@ -14,21 +14,13 @@ type Echo struct {
 	Timestamp string `json:"timestamp"`
 }
 
-// NewEcho creates and returns a new Echo struct
-func NewEcho(message, timestamp string) *Echo {
-	return &Echo{
-		Message:   message,
-		Timestamp: timestamp,
-	}
-}
-
 type EchoHandler struct{}
 
 func (s *EchoHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	var response []byte
-	var err error
 	var echoBody []byte
 	var echoResponse = Echo{}
+	var err error
+	var response []byte
 
 	if r.Method != "POST" {
 		problem.New(
@@ -75,6 +67,3 @@ func (s *EchoHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	w.Write(response)
 }
-
-// X-Request-ID
-// could incorporate metrics in here too (# of requests per sec)
