@@ -1,12 +1,14 @@
-VERSION		= $(shell /usr/bin/git describe --always)
-BUILD_DATE 	= $(shell date -u +%Y-%m-%dT%T:%Z)
-HOSTNAME 	= $(shell hostname)
 
-CONFIG	?= config.yaml
+VERSION	    = $(shell /usr/bin/git describe --always)
+BUILD_DATE  = $(shell date -u +%Y-%m-%dT%T:%Z)
+HOSTNAME    = $(shell hostname)
+
+CONFIG     ?= config.yaml
 
 GO_LDFLAGS  = -X main.version=$(if $(VERSION),$(VERSION),unknown)
 GO_LDFLAGS += -X main.buildDate=$(if $(BUILD_DATE),$(BUILD_DATE),unknown)
 GO_LDFLAGS += -X main.buildHost=$(if $(HOSTNAME),$(HOSTNAME),unknown)
+
 
 build:
 	@echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
@@ -22,3 +24,5 @@ run:
 
 test:
 	echo "Not implemented"
+
+.PHONY: build run test
