@@ -31,9 +31,10 @@ import (
 )
 
 var (
-	version   = "unknown"
+	// These values are assigned at build using `-ldflags` (see: Makefile)
 	buildDate = "unknown"
 	buildHost = "unknown"
+	version   = "unknown"
 )
 
 var (
@@ -81,11 +82,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	logger, err = log.NewLogger(
-		os.Stdout,
-		config.ServiceName,
-		config.LogLevel,
-	)
+	logger, err = log.NewLogger(os.Stdout, config.ServiceName, config.LogLevel)
 
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Unable to initialize the logger: %s", err)

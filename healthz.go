@@ -22,7 +22,7 @@ import (
 	"runtime"
 )
 
-// Healthz is a struct returned by /healthz endpoint
+// Healthz represents the JSON object sent in the body of a `/healthz` response.
 type Healthz struct {
 	Version   string `json:"version"`
 	BuildDate string `json:"build_date"`
@@ -30,7 +30,7 @@ type Healthz struct {
 	GoVersion string `json:"go_version"`
 }
 
-// NewHealthz creates and returns a new HealthZ ...
+// NewHealthz initializes and returns a new Healthz.
 func NewHealthz(version, date, host string) *Healthz {
 	return &Healthz{
 		Version:   version,
@@ -40,6 +40,7 @@ func NewHealthz(version, date, host string) *Healthz {
 	}
 }
 
+// HealthzHandler is an http.Handler that implements a readiness endpoint.
 type HealthzHandler struct {
 	healthz *Healthz
 }

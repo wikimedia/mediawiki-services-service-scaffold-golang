@@ -26,11 +26,14 @@ import (
 	"schneider.vip/problem"
 )
 
+// Echo represents the JSON object sent as the body of the POST, as well as the
+// the one that is echoed back in the response.
 type Echo struct {
 	Message   string `json:"message"`
 	Timestamp string `json:"timestamp"`
 }
 
+// EchoHandler is an http.Handler that implements an echo service endpoint.
 type EchoHandler struct {
 	Logger *logger.Logger
 }
