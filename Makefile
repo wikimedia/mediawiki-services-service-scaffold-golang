@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+APPNAME     = service-scaffold-golang
 VERSION     = $(shell /usr/bin/git describe --always)
 BUILD_DATE  = $(shell date -u +%Y-%m-%dT%T:%Z)
 HOSTNAME    = $(shell hostname)
@@ -30,7 +31,7 @@ build:
 	@echo "BUILD DATE ...: $(BUILD_DATE)"
 	@echo "GO VERSION ...: $(word 3, $(shell go version))"
 	@echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-	go build -ldflags "$(GO_LDFLAGS)" .
+	go build -ldflags "$(GO_LDFLAGS)" -o $(APPNAME) .
 
 run:
 	go run -ldflags "$(GO_LDFLAGS)" . -config $(CONFIG)
@@ -38,4 +39,7 @@ run:
 test:
 	echo "Not implemented"
 
-.PHONY: build run test
+clean:
+	rm -f $(APPNAME)
+
+.PHONY: build run test clean
