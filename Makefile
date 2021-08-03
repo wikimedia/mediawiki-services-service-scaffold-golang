@@ -37,7 +37,7 @@ run:
 	go run -ldflags "$(GO_LDFLAGS)" . -config $(CONFIG)
 
 test:
-	echo "Not implemented"
+	go test
 
 clean:
 	rm -f $(APPNAME)

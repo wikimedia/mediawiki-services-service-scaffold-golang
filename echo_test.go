@@ -1,5 +1,6 @@
 /*
- * Copyright 2021 Nikki Nikkhoui <nnikkhoui@wikimedia.org> and Wikimedia Foundation
+ * Copyright 2021 Nikki Nikkhoui <nnikkhoui@wikimedia.org>, Frances Goodwin <fgoodwin@wikimedia.org>
+ * and Wikimedia Foundation
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +21,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
-	"io"
+	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
 	"strings"
@@ -51,7 +52,7 @@ func TestInvalidMethod(t *testing.T) {
 
 	res := rr.Result().Body
 
-	body, _ := io.ReadAll(res)
+	body, _ := ioutil.ReadAll(res)
 
 	e := httperr{}
 
@@ -79,7 +80,7 @@ func TestEmptyBody(t *testing.T) {
 
 	res := rr.Result().Body
 
-	body, _ := io.ReadAll(res)
+	body, _ := ioutil.ReadAll(res)
 
 	e := httperr{}
 
@@ -106,7 +107,7 @@ func TestInvalidJSON(t *testing.T) {
 
 	res := rr.Result().Body
 
-	body, _ := io.ReadAll(res)
+	body, _ := ioutil.ReadAll(res)
 
 	e := httperr{}
 
@@ -140,7 +141,7 @@ func TestFailedBody(t *testing.T) {
 
 	res := rr.Result().Body
 
-	body, _ := io.ReadAll(res)
+	body, _ := ioutil.ReadAll(res)
 
 	e := httperr{}
 
@@ -166,7 +167,7 @@ func TestEcho(t *testing.T) {
 
 	res := rr.Result().Body
 
-	body, _ := io.ReadAll(res)
+	body, _ := ioutil.ReadAll(res)
 
 	e := Echo{}
 
